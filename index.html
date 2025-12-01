@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vijay Shahi - ML Engineer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f8f8f8;
+      color: #111;
+      scroll-behavior: smooth;
+    }
+
+    /* NAVBAR */
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: fixed;
+      top: 0;
+      background: rgba(248,248,248,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+
+    nav .logo {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      align-items: center;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #111;
+      font-size: 15px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      outline: 1.5px solid #111;
+    }
+
+    .toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* INTRO SECTION */
+    .intro {
+      margin-top: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+      flex-direction: column;
+      min-height: 70vh;
+    }
+
+    .intro img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid #111;
+    }
+
+    .intro h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .typing {
+      font-size: 20px;
+      height: 30px;
+      font-weight: 500;
+      border-right: 2px solid #111;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 3s steps(30) forwards, blink 0.6s infinite;
+      display: inline-block;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 280px; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      padding: 25px 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+      text-align: center;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      outline: 2px solid #111;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .project-card {
+      padding: 30px 25px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      outline: 2px solid #111;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    .project-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* CONTACT FORM */
+    .contact-container {
+      max-width: 500px;
+      margin: 30px auto 0;
+    }
+
+    .contact-container p {
+      margin-bottom: 25px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1.5px solid #ddd;
+      border-radius: 6px;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #111;
+    }
+
+    .contact-form button {
+      width: 100%;
+      padding: 14px;
+      background: #111;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .contact-form button:hover {
+      background: #000;
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+      color: #111;
+      background: #f8f8f8;
+      border-top: 1px solid #ddd;
+      margin-top: 60px;
+    }
+
+    footer a {
+      color: #111;
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      color: #000;
+      text-decoration: underline;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media(max-width: 768px){
+      nav {
+        padding: 12px 20px;
+      }
+
+      nav .logo {
+        font-size: 18px;
+      }
+
+      nav ul {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        background: rgba(248,248,248,0.98);
+        width: 200px;
+        height: calc(100vh - 60px);
+        flex-direction: column;
+        padding: 30px 20px;
+        border-left: 1px solid #ddd;
+        display: none;
+        gap: 15px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      nav ul li a {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+      }
+
+      .toggle {
+        display: block;
+      }
+
+      .intro {
+        margin-top: 60px;
+        padding: 40px 20px;
+        min-height: 60vh;
+      }
+
+      .intro h2 {
+        font-size: 26px;
+      }
+
+      .typing {
+        font-size: 18px;
+      }
+
+      @keyframes typing {
+        to { width: 240px; }
+      }
+
+      section {
+        padding: 40px 15px;
+      }
+
+      section h2 {
+        font-size: 26px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+      }
+
+      .skill-card {
+        padding: 20px 15px;
+        font-size: 15px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .project-card {
+        padding: 25px 20px;
+      }
+
+      .contact-container {
+        padding: 0 10px;
+      }
+    }
+
+    @media(max-width: 480px){
+      nav .logo {
+        font-size: 16px;
+      }
+
+      .intro img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .intro h2 {
+        font-size: 24px;
+      }
+
+      .typing {
+        font-size: 16px;
+      }
+
+      @keyframes typing {
+        to { width: 210px; }
+      }
+
+      section h2 {
+        font-size: 24px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .skill-card {
+        font-size: 14px;
+      }
+
+      .project-card h3 {
+        font-size: 18px;
+      }
+
+      .contact-form input,
+      .contact-form textarea,
+      .contact-form button {
+        font-size: 14px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Vijay - ML Engineer</div>
+    <div class="toggle" onclick="toggleMenu()">☰</div>
+    <ul id="menu">
+      <li><a href="#intro" onclick="closeMenu()">Home</a></li>
+      <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+      <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="intro" id="intro">
+    <img src="assets/profile.jpeg" alt="Profile" />
+    <h2>Hii, I'm Vijay</h2>
+    <div class="typing">Machine Learning Engineer</div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">Python</div>
+      <div class="skill-card">Machine Learning</div>
+      <div class="skill-card">Data Science</div>
+      <div class="skill-card">NumPy</div>
+      <div class="skill-card">Pandas</div>
+      <div class="skill-card">Scikit-Learn</div>
+      <div class="skill-card">Matplotlib</div>
+      <div class="skill-card">SQL</div>
+      <div class="skill-card">Flask</div>
+      <div class="skill-card">HTML</div>
+      <div class="skill-card">CSS</div>
+      <div class="skill-card">JavaScript</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Machine Learning Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card" onclick="window.open('https://github.com/vijayshahiii/spam-email-classifier')">
+        <h3>Spam Email Classifier</h3>
+        <p>Classifies emails as Spam or Ham using TF-IDF + Logistic Regression with high accuracy.</p>
+      </div>
+      <div class="project-card" onclick="window.open('https://github.com/yourgithub/student-marks-predictor')">
+        <h3>Student Marks Predictor</h3>
+        <p>Predicts student marks based on study hours using linear regression analysis.</p>
+      </div>
+      <div class="project-card" onclick="window.open('https://github.com/yourgithub/house-price-ml')">
+        <h3>House Price Prediction</h3>
+        <p>Predicts house prices using area, rooms, and location with machine learning models.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-container">
+      <p>Feel free to contact me for projects, collaborations, or opportunities.</p>
+      <form class="contact-form" onsubmit="return handleSubmit(event)">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Vijay Shahi. All Rights Reserved.  
+    <span>
+      <a href="mailto:shahivijayi145@gmail.com">Email</a> | 
+      <a href="https://www.linkedin.com/in/vijayshahi/" target="_blank">LinkedIn</a>
+    </span>
+  </footer>
+
+  <script>
+    function toggleMenu(){
+      document.getElementById("menu").classList.toggle("active");
+    }
+
+    function closeMenu(){
+      document.getElementById("menu").classList.remove("active");
+    }
+
+    function handleSubmit(event){
+      event.preventDefault();
+      alert("Thanks for reaching out! This is a demo form.");
+      return false;
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById('menu');
+      const toggle = document.querySelector('.toggle');
+      if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+        menu.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>
